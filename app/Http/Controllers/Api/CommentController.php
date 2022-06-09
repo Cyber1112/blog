@@ -35,7 +35,4 @@ class CommentController extends Controller
         ]);
         return response()->json(['Comment created successfully.', $comment]);
     }
-    public function show(){
-        
-    }
 }

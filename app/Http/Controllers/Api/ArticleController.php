@@ -29,13 +29,7 @@ class ArticleController extends Controller
         }
 
         $newImageName = uniqid() . '-' . $request->title . '.' . $request->image->extension();
-
         $request->image->move(public_path('images'), $newImageName);
-
-        // $files = $request->file('image');
-        // $extension = $files->getClientOriginalExtension();
-        // $path = $request->image->store('public/images');
-        // $name = $request->image->getClientOriginalName();
 
         $article = Article::create([
             'title' => $request->title,
@@ -44,6 +38,7 @@ class ArticleController extends Controller
             'image_path' => $newImageName,
             'user_id' => Auth::id(),
         ]);
+        
         return response()->json(['Article created successfully.', $article]);
     }
 
